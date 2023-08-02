@@ -2,7 +2,7 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
 export default function MainLayout({ children }) {
-  console.log(children);
+  //console.log(children);
   return (
     <div className="w-full min-h-screen bg-red-500 flex flex-col">
       <NavBar />

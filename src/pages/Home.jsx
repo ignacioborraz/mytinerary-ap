@@ -20,7 +20,7 @@ export default function Home() {
     { id: "oc1", city: "Majuro", photo: "/img/oceania/majuro.jpg" },
     { id: "oc2", city: "Sidney", photo: "/img/oceania/sidney.jpg" },
     { id: "oc3", city: "Suva", photo: "/img/oceania/suva.jpg" },
-    { id: "oc4", city: "Wellington", photo: "/img/oceania/wellington.jpg" },
+    { id: "oc4", city: "Wellington", photo: "/img/oceania/wellington.jpg" }
   ];
 
   return (
