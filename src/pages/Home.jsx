@@ -1,7 +1,9 @@
-import Arrow from "../components/Arrow";
-import CardPolaroid from "../components/CardPolaroid";
+import { useState } from "react";
+import Carousel from "../components/Carousel";
 
 export default function Home() {
+
+  const [show,setShow] = useState(true)
   const nombre1 = "My";
   const nombre2 = "Tinerary";
   let data = [
@@ -26,21 +28,9 @@ export default function Home() {
   return (
     <main className="grow flex flex-col items-center mt-[20px]">
       <h2 className="text-[25px] font-extrabold">{`${nombre1} ${nombre2}`}</h2>
-      <p className="text-[18px]">{`${nombre1} ${nombre2}`}</p>
-      <div className="flex justify-center items-center">
-        <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5" />
-        <div className="flex w-11/12 flex-wrap justify-center mt-5">
-          {data.slice(12, 16).map((each, index) => (
-            <CardPolaroid
-              key={index}
-              src={each.photo}
-              alt={each.id}
-              text={each.city}
-            />
-          ))}
-        </div>
-        <Arrow direction="M8.25 4.5l7.5 7.5-7.5 7.5" />
-      </div>
+      {show ? (<input onClick={()=>setShow(!show)} type='button' value='hide' className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" />) : (<input onClick={()=>setShow(!show)} type='button' value='show' className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" />)}
+      {/* { (CONDICION) ? (QUE PASA SI ES true) : (QUE PASA SI ES false) } */}
+      {show ? <Carousel data={data} /> : <h1 className="text-[24px] text-white" >click arriba para ver carousel</h1>}
     </main>
   );
 }
