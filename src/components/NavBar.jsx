@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link as Anchor } from "react-router-dom"
 
 export default function NavBar() {
   let [show,setShow] = useState(false)
@@ -21,15 +22,18 @@ export default function NavBar() {
       </svg>
       {show ? (
         <div className="flex ms-5 absolute top-[70px] left-[70px] gap-2 flex flex-col bg-pink-400 p-2 rounded-xl">
-        <p className="h-[50px] text-[20px] px-2 bg-white rounded-xl w-[100px] flex justify-center items-center mx-1">
+        <Anchor to='/' className="h-[50px] text-[20px] px-2 bg-white rounded-xl w-[100px] flex justify-center items-center mx-1">
           Home
-        </p>
-        <p className="h-[50px] text-[20px] px-2 bg-white rounded-xl w-[100px] flex justify-center items-center mx-1">
+        </Anchor>
+        <Anchor to='/cities' className="h-[50px] text-[20px] px-2 bg-white rounded-xl w-[100px] flex justify-center items-center mx-1">
+          Cities
+        </Anchor>
+        <Anchor to='/signin' className="h-[50px] text-[20px] px-2 bg-white rounded-xl w-[100px] flex justify-center items-center mx-1">
           Sign In
-        </p>
-        <p className="h-[50px] text-[20px] px-2 bg-white rounded-xl w-[100px] flex justify-center items-center mx-1">
+        </Anchor>
+        <Anchor to='/signup' className="h-[50px] text-[20px] px-2 bg-white rounded-xl w-[100px] flex justify-center items-center mx-1">
           Sign Up
-        </p>
+        </Anchor>
       </div>
       ) : (null)}
       
