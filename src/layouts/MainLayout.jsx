@@ -4,7 +4,11 @@ import { Outlet } from 'react-router-dom'
 
 export default function MainLayout() {
   return (
-    <div className="w-full min-h-screen bg-red-500 flex flex-col">
+    <div className="w-full min-h-screen bg-white flex flex-col
+    sm:bg-red-300
+    md:bg-red-500
+    lg:bg-red-700
+    xl:bg-red-900 xl:w-[90vw] xl:m-auto">
       <NavBar />
       {/* {console.log(nombre2)} */}
       {/* esto es un comentario */}
