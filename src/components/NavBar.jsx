@@ -1,8 +1,14 @@
 import { useState } from "react";
-import { Link as Anchor } from "react-router-dom"
+import Display from "./Display";
+import Label from "./Label";
 
 export default function NavBar() {
   let [show,setShow] = useState(false)
+  let options = [
+    {to: "/", title: "Home"},
+    {to: "/cities", title: "Cities"},
+    {to: "/signin", title: "Log In", backgroundColor: "#4F46E5", color: "white"}
+  ]
   return (
     <header className="h-[87px] px-10 bg-red-200 flex justify-start items-center">
       <svg
@@ -11,7 +17,8 @@ export default function NavBar() {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-[50px] h-[50px] bg-white p-[5px] rounded-xl cursor-pointer"
+        className="w-[50px] h-[50px] bg-white p-[5px] rounded-xl cursor-pointer
+        md:hidden"
         onClick={()=>setShow(!show)}
       >
         <path
@@ -20,23 +27,15 @@ export default function NavBar() {
           d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
         />
       </svg>
-      {show ? (
-        <div className="flex ms-5 absolute top-[70px] left-[70px] gap-2 flex flex-col bg-pink-400 p-2 rounded-xl">
-        <Anchor to='/' className="h-[50px] text-[20px] px-2 bg-white rounded-xl w-[100px] flex justify-center items-center mx-1">
-          Home
-        </Anchor>
-        <Anchor to='/cities' className="h-[50px] text-[20px] px-2 bg-white rounded-xl w-[100px] flex justify-center items-center mx-1">
-          Cities
-        </Anchor>
-        <Anchor to='/signin' className="h-[50px] text-[20px] px-2 bg-white rounded-xl w-[100px] flex justify-center items-center mx-1">
-          Sign In
-        </Anchor>
-        <Anchor to='/signup' className="h-[50px] text-[20px] px-2 bg-white rounded-xl w-[100px] flex justify-center items-center mx-1">
-          Sign Up
-        </Anchor>
+      {/* {show ? <Display options={options}/> : null} */} {/* if else */}
+      {show && <Display options={options}/>} {/* if */}
+      <div className="w-full flex justify-between items-center">
+        <h1 className="hidden text-[30px]
+        md:flex">
+          My Tinerary
+        </h1>
+        <Label options={options} />
       </div>
-      ) : (null)}
-      
     </header>
   );
 }

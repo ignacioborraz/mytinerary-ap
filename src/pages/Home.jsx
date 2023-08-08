@@ -23,9 +23,9 @@ export default function Home() {
   return (
     <main className="grow flex flex-col items-center mt-[20px]">
       <h2 className="text-[25px] font-extrabold">{`${nombre1} ${nombre2}`}</h2>
-      {show ? (<input onClick={()=>setShow(!show)} type='button' value='hide' className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" />) : (<input onClick={()=>setShow(!show)} type='button' value='show' className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" />)}
+      {show ? (<input onClick={()=>setShow(!show)} type='button' value='hide' className="hidden sm:flex bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" />) : (<input onClick={()=>setShow(!show)} type='button' value='show' className="hidden sm:flex bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" />)}
       {/* { (CONDICION) ? (QUE PASA SI ES true) : (QUE PASA SI ES false) } */}
-      {show ? <Carousel data={data} /> : <h1 className="text-[24px] text-white" >click arriba para ver carousel</h1>}
+      {show ? <Carousel data={data} /> : <h1 className="text-[24px] text-white hidden sm:flex" >click arriba para ver carousel</h1>}
     </main>
   );
 }
