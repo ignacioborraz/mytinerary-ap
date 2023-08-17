@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import Carousel from "../components/Carousel";
 import axios from "axios";
+import apiUrl from '../apiUrl.js'
 
 export default function Home() {
 
@@ -10,8 +11,9 @@ export default function Home() {
   const nombre2 = "Tinerary";
   useEffect(
     ()=>{
-      axios('/data.json')
-        .then(res=>setData(res.data))
+      axios(apiUrl+'cities/carousel')
+        //.then(res=>console.log(res.data.data_carousel))
+        .then(res=>setData(res.data.data_carousel))
         .catch(err=>console.log(err))
     },        //callback que NO debe retornar nada y NO puede ser asincrona
     []        //array de dependencias
