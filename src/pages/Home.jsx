@@ -36,6 +36,7 @@ export default function Home() {
       {show ? (<input onClick={()=>setShow(!show)} type='button' value='hide' className="hidden sm:flex bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" />) : (<input onClick={()=>setShow(!show)} type='button' value='show' className="hidden sm:flex bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" />)}
       {/* { (CONDICION) ? (QUE PASA SI ES true) : (QUE PASA SI ES false) } */}
       {show ? <Carousel data={carousel} /> : <h1 className="text-[24px] text-white hidden sm:flex" >click arriba para ver carousel</h1>}
+      <p className="text-[20px] text-center my-5 sm:hidden">AUMENTA LA RESOLUCION PARA VER EL CAROUSEL</p>
     </main>
   );
 }

@@ -7,7 +7,7 @@ export default function NavBar() {
   let options = [
     {to: "/", title: "Home"},
     {to: "/cities", title: "Cities"},
-    {to: "/signin", title: "Log In", backgroundColor: "#4F46E5", color: "white"}
+    {to: "/signin", title: "Log In", backgroundColor: "#9F7AEA", color: "white", hover:"#B794F4" }
   ]
   return (
     <header className="h-[87px] px-10 bg-red-200 flex justify-start items-center">
