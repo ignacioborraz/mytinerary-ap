@@ -21,5 +21,26 @@ const read_6_users = createAsyncThunk(
     }
 )
 
-const user_actions = { read_6_users }
+const signin = createAsyncThunk(
+    'signin',
+    async(obj)=>{
+        try {
+            let data = await axios.post(apiUrl+'auth/signin',obj.data)
+            console.log(data);
+            localStorage.setItem('token',data.data.response.token)
+            return {
+                user: data.data.response.user,
+                token: data.data.response.token
+            }
+        } catch (error) {
+            console.log(error);
+            return {
+                user: {},
+                token: ''
+            }
+        }
+    }
+)
+
+const user_actions = { read_6_users,signin }
 export default user_actions
