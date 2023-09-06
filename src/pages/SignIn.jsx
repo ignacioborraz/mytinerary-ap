@@ -1,19 +1,22 @@
 import { useRef } from "react";
 import { Link as Anchor } from "react-router-dom";
-//import axios from "axios";
-//import apiUrl from "../apiUrl";
+import { useDispatch, useSelector } from "react-redux";
+import user_actions from "../store/actions/users";
+const { signin } = user_actions;
 
 export default function SignIn() {
   const mail_signin = useRef("");
   const password_signin = useRef("");
-
+  const dispatch = useDispatch();
   async function handleSignIn() {
     let data = {
       mail: mail_signin.current.value,
       password: password_signin.current.value,
     };
-    console.log(data);
+    dispatch(signin({ data }));
   }
+  let user = useSelector(store=>store)
+  console.log(user);
   return (
     <form className="flex flex-col items-center justify-center p-[20px] w-[360px] bg-white m-auto">
       <h1 className="text-[36px] font-bold text-center mb-[10px]">Sign In!</h1>
@@ -45,7 +48,7 @@ export default function SignIn() {
         Don't you have an account?{" "}
         <Anchor
           className="text-[20px] font-bold text-purple-500 cursor-pointer"
-          to='/signup'
+          to="/signup"
         >
           Sign up!
         </Anchor>
