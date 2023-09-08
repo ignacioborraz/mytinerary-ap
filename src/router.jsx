@@ -6,7 +6,6 @@ import Cities from "./pages/Cities"
 import CityDetail from "./pages/CityDetail"
 import MainLayout from "./layouts/MainLayout"
 import NotFound from "./pages/NotFound"
-import Itineraries from "./pages/Itineraries"
 import Profile from "./pages/Profile"
 import NavLayout from "./layouts/NavLayout"
 
@@ -30,12 +29,8 @@ const router = createBrowserRouter([
     path: "/",
     element: <NavLayout />,
     children: [{
-      path: "/hola/layout", element: <Itineraries />
+      path: "/nav/layout", element: <Home />
     }],
-  },
-  {
-    path: "/itineraries",
-    element: <Itineraries />
   }
 ]);
 

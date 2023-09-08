@@ -2,13 +2,11 @@ import { useRef, useState } from "react";
 import UserData from "../components/UserData";
 import { useDispatch, useSelector } from "react-redux";
 import user_actions from "../store/actions/users";
-const { read_6_users } = user_actions;
+const { update_user } = user_actions;
 
 export default function Profile() {
-  //selecciono los datos del usuario del store
   const user = useSelector((store) => store.users.user);
-  console.log(user);
-  //completo los datos default del usuario
+  //console.log(user);
   const name = useRef("");
   const lastName = useRef("");
   const country = useRef("");
@@ -18,16 +16,33 @@ export default function Profile() {
   const dispatch = useDispatch();
   async function handleUpdate() {
     try {
-      console.log("actualizar lo que corresponda");
+      let data = {};
+      if (name.current.value) {
+        data.name = name.current.value;
+      }
+      if (lastName.current.value) {
+        data.lastName = lastName.current.value;
+      }
+      if (country.current.value) {
+        data.country = country.current.value;
+      }
+      if (photo.current.value) {
+        data.photo = photo.current.value;
+      }
+      if (password.current.value) {
+        data.password = password.current.value;
+      }
+      //console.log(data);
+      dispatch(update_user({ data }));
     } catch (error) {
       console.log(error);
     }
   }
   return (
-    <div className="flex flex-col items-center justify-center md:flex-row md:justify-evenly h-[414px]">
+    <div className="flex flex-col flex-grow items-center justify-center md:flex-row md:justify-evenly">
       <UserData user={user} show={show} setShow={setShow} />
       {show && (
-        <form className="flex flex-col items-center justify-center p-[20px] w-[360px] bg-red-200 md:bg-white">
+        <form className="flex flex-col items-center justify-center p-[20px] w-[360px] h-[400px] bg-red-200 sm:bg-white my-[20px] md:my-0">
           <h1 className="text-[36px] font-bold text-center mb-[10px]">
             Update!
           </h1>
@@ -78,7 +93,7 @@ export default function Profile() {
           />
           <input
             type="button"
-            className="mb-5 w-full shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded cursor-pointer"
+            className="w-full shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded cursor-pointer"
             value="Update!"
             onClick={handleUpdate}
           />
