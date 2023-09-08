@@ -30,13 +30,15 @@ const signin = createAsyncThunk(
             localStorage.setItem('token',data.data.response.token)
             return {
                 user: data.data.response.user,
-                token: data.data.response.token
+                token: data.data.response.token,
+                messages: []
             }
         } catch (error) {
             console.log(error);
             return {
                 user: {},
-                token: ''
+                token: '',
+                messages: error.response.data.messages || [error.response.data.message]
             }
         }
     }
