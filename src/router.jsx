@@ -7,6 +7,7 @@ import CityDetail from "./pages/CityDetail"
 import MainLayout from "./layouts/MainLayout"
 import NotFound from "./pages/NotFound"
 import Itineraries from "./pages/Itineraries"
+import Profile from "./pages/Profile"
 import NavLayout from "./layouts/NavLayout"
 
 const router = createBrowserRouter([
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
         { path: "/home", element: <Home />},
         { path: "/signin", element: <SignIn />},
         { path: "/signup", element: <SignUp />},
+        { path: "/profile", element: <Profile /> },
         { path: "/cities", element: <Cities /> },
         { path: "/city/:city_id", element: <CityDetail />},
         { path: "/*", element: <NotFound />}

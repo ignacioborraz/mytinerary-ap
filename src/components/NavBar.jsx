@@ -7,19 +7,33 @@ const { signout } = user_actions;
 
 export default function NavBar() {
   let [show, setShow] = useState(false);
+  let mail = useSelector((store) => store.users.user?.mail);
+  let dispatch = useDispatch();
   let options = [
-    { to: "/", title: "Home" },
-    { to: "/cities", title: "Cities" },
+    { to: "/", title: "Home", show: true },
+    { to: "/cities", title: "Cities", show: true },
     {
       to: "/signin",
       title: "Log In",
       backgroundColor: "#9F7AEA",
       color: "white",
       hover: "#B794F4",
+      show: mail ? false : true,
+    },
+    {
+      to: "/profile",
+      title: "Profile",
+      show: mail ? true : false,
+    },
+    {
+      title: "Sign Out",
+      backgroundColor: "#9F7AEA",
+      color: "white",
+      hover: "#B794F4",
+      show: mail ? true : false,
+      onClick: () => dispatch(signout()),
     },
   ];
-  let mail = useSelector((store) => store.users.user?.mail);
-  let dispatch = useDispatch();
   return (
     <header className="h-[87px] px-10 bg-red-200 flex justify-start items-center">
       <svg
@@ -47,19 +61,6 @@ export default function NavBar() {
         >
           My Tinerary - {mail}
         </h1>
-        {mail && (
-          <span
-            onClick={() => dispatch(signout())}
-            className="h-[50px] text-[20px] px-2 bg-white hover:bg-gray-100 rounded-xl w-[100px] flex justify-center items-center mx-1 cursor-pointer"
-            style={{
-              backgroundColor: "#9F7AEA",
-              color: "white",
-              hover: "#B794F4",
-            }}
-          >
-            Sign Out
-          </span>
-        )}
         <Label options={options} />
       </div>
     </header>

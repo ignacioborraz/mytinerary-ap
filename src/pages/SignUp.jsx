@@ -71,7 +71,7 @@ export default function SignUp() {
           name="country"
           id="country"
           defaultValue=""
-          placeholder="Type country"
+          placeholder="Type Country"
         />
         <input
           ref={photo}
