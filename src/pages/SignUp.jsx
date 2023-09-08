@@ -26,10 +26,12 @@ export default function SignUp() {
         name: name.current.value,
         lastName: lastName.current.value,
         country: country.current.value,
-        photo: photo.current.value,
         mail: mail.current.value,
         password: password.current.value,
       };
+        if (photo.current.value) {
+          data.photo = photo.current.value
+        }
       await axios.post(
         apiUrl + "users/signup", //url del endpoind de creacion
         data //objeto con los datos para crear
@@ -49,7 +51,7 @@ export default function SignUp() {
         <input
           ref={name}
           type="text"
-          className="text-center mb-[10px] bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+          className="text-center mb-[10px] bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primary"
           name="name"
           id="name"
           defaultValue=""
@@ -58,7 +60,7 @@ export default function SignUp() {
         <input
           ref={lastName}
           type="text"
-          className="text-center mb-[10px] bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+          className="text-center mb-[10px] bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primary"
           name="lastName"
           id="lastName"
           defaultValue=""
@@ -67,16 +69,16 @@ export default function SignUp() {
         <input
           ref={country}
           type="text"
-          className="text-center mb-[10px] bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+          className="text-center mb-[10px] bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primary"
           name="country"
           id="country"
           defaultValue=""
-          placeholder="Type country"
+          placeholder="Type Country"
         />
         <input
           ref={photo}
           type="text"
-          className="text-center mb-[10px] bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+          className="text-center mb-[10px] bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primary"
           name="photo"
           id="photo"
           defaultValue=""
@@ -85,7 +87,7 @@ export default function SignUp() {
         <input
           ref={mail}
           type="text"
-          className="text-center mb-[10px] bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+          className="text-center mb-[10px] bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primary"
           name="mail"
           id="mail"
           defaultValue=""
@@ -94,7 +96,7 @@ export default function SignUp() {
         <input
           ref={password}
           type="password"
-          className="text-center mb-[10px] bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+          className="text-center mb-[10px] bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primary"
           name="password"
           id="password"
           defaultValue=""
@@ -102,14 +104,14 @@ export default function SignUp() {
         />
         <input
           type="button"
-          className="mb-5 w-full shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded cursor-pointer"
+          className="mb-5 w-full shadow bg-primary hover:bg-secondary focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded cursor-pointer"
           value="Sign Up!"
           onClick={handleSignUp}
         />
         <p>
           Already have an account?{" "}
           <Anchor
-            className="text-[20px] font-bold text-purple-500 cursor-pointer"
+            className="text-[20px] font-bold text-primary cursor-pointer"
             to="/signin"
           >
             Sign in!

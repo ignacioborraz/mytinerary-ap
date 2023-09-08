@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Display from "./Display";
 import Label from "./Label";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,22 +7,34 @@ import user_actions from "../store/actions/users";
 const { signout } = user_actions;
 
 export default function NavBar() {
+  const navigate = useNavigate();
   let [show, setShow] = useState(false);
+  let photo = useSelector((store) => store.users.user?.photo);
+  let dispatch = useDispatch();
   let options = [
-    { to: "/", title: "Home" },
-    { to: "/cities", title: "Cities" },
+    { to: "/", title: "Home", show: true },
+    { to: "/cities", title: "Cities", show: true },
     {
       to: "/signin",
       title: "Log In",
-      backgroundColor: "#9F7AEA",
-      color: "white",
-      hover: "#B794F4",
+      show: photo ? false : true,
+    },
+    {
+      to: "/profile",
+      title: "Profile",
+      show: photo ? true : false,
+    },
+    {
+      title: "Sign Out",
+      show: photo ? true : false,
+      onClick: () => {
+        dispatch(signout());
+        navigate("/");
+      },
     },
   ];
-  let mail = useSelector((store) => store.users.user?.mail);
-  let dispatch = useDispatch();
   return (
-    <header className="h-[87px] px-10 bg-red-200 flex justify-start items-center">
+    <header className="h-[87px] px-10 bg-tertiary flex justify-start items-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -45,21 +58,8 @@ export default function NavBar() {
           className="hidden text-[30px]
         md:flex"
         >
-          My Tinerary - {mail}
+          My Tinerary
         </h1>
-        {mail && (
-          <span
-            onClick={() => dispatch(signout())}
-            className="h-[50px] text-[20px] px-2 bg-white hover:bg-gray-100 rounded-xl w-[100px] flex justify-center items-center mx-1 cursor-pointer"
-            style={{
-              backgroundColor: "#9F7AEA",
-              color: "white",
-              hover: "#B794F4",
-            }}
-          >
-            Sign Out
-          </span>
-        )}
         <Label options={options} />
       </div>
     </header>

@@ -32,11 +32,11 @@ export default function Home() {
 
   return (
     <main className="grow flex flex-col items-center mt-[20px]">
-      <h2 className="text-[25px] font-extrabold">{`${nombre1} ${nombre2}`}</h2>
-      {show ? (<input onClick={()=>setShow(!show)} type='button' value='hide' className="hidden sm:flex bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" />) : (<input onClick={()=>setShow(!show)} type='button' value='show' className="hidden sm:flex bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" />)}
+      <h2 className="text-[25px] font-extrabold md:text-white md:text-[40px] my-2">{`${nombre1} ${nombre2}`}</h2>
+      {show ? (<input onClick={()=>setShow(!show)} type='button' value='hide' className="hidden sm:flex bg-primary hover:bg-secondary text-white font-bold py-2 px-4 my-2 rounded-full" />) : (<input onClick={()=>setShow(!show)} type='button' value='show' className="hidden sm:flex bg-primary hover:bg-secondary text-white font-bold py-2 px-4 my-2 rounded-full" />)}
       {/* { (CONDICION) ? (QUE PASA SI ES true) : (QUE PASA SI ES false) } */}
-      {show ? <Carousel data={carousel} /> : <h1 className="text-[24px] text-white hidden sm:flex" >click arriba para ver carousel</h1>}
-      <p className="text-[20px] text-center my-5 sm:hidden">AUMENTA LA RESOLUCION PARA VER EL CAROUSEL</p>
+      {show ? <Carousel data={carousel} /> : <h1 className="text-[20px] md:text-white hidden sm:flex my-2" >click arriba para ver carousel</h1>}
+      <p className="text-[20px] text-center my-2 sm:hidden">AUMENTA LA RESOLUCION PARA VER EL CAROUSEL</p>
     </main>
   );
 }
