@@ -5,6 +5,7 @@ import apiUrl from "../apiUrl";
 import { Link as Anchor } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import user_actions from "../store/actions/users"
+import Google from "../components/Google";
 const { read_6_users } = user_actions
 
 export default function SignUp() {
@@ -108,6 +109,7 @@ export default function SignUp() {
           value="Sign Up!"
           onClick={handleSignUp}
         />
+        <Google />
         <p>
           Already have an account?{" "}
           <Anchor
